@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Четыре видео с Vimeo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent; /* чтобы не было белого фона */
+        }
+        .video-row {
+            display: flex;
+            flex-wrap: wrap;        /* на узких экранах переносить вниз */
+            gap: 10px;              /* промежуток между видео */
+            justify-content: center;
+        }
+        .video-item {
+            flex: 1 1 200px;        /* базовый размер, но можно точнее */
+            min-width: 200px;        /* минимальная ширина видео */
+            max-width: 300px;        /* ограничим, чтобы не слишком растягивались */
+        }
+        /* если хотите точное 1:1 квадрат, можно задать фиксированную высоту через padding */
+        .video-item iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1 / 1;    /* гарантирует квадрат 1:1 */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-row">
+        <!-- Видео 1 -->
+        <div class="video-item">
+            <iframe src="https://player.vimeo.com/video/1169296356?badge=0&autopause=0&player_id=0&app_id=58479" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    title="без наценки_ап"></iframe>
+        </div>
+        <!-- Видео 2 -->
+        <div class="video-item">
+            <iframe src="https://player.vimeo.com/video/1169296199?badge=0&autopause=0&player_id=0&app_id=58479" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    title="Instagram post - 784"></iframe>
+        </div>
+        <!-- Видео 3 -->
+        <div class="video-item">
+            <iframe src="https://player.vimeo.com/video/1169296088?badge=0&autopause=0&player_id=0&app_id=58479" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    title="IMG_6831"></iframe>
+        </div>
+        <!-- Видео 4 -->
+        <div class="video-item">
+            <iframe src="https://player.vimeo.com/video/1169295524?badge=0&autopause=0&player_id=0&app_id=58479" 
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    title="IMG_2026"></iframe>
+        </div>
+    </div>
+</body>
+</html>
