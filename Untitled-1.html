@@ -1,99 +1,92 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница с видео</title>
+    <title>Видео по клику</title>
     <style>
-        /* Убираем отступы у body, чтобы изображение прилегало к краям */
         body {
             margin: 0;
             padding: 0;
-            background: #fff; /* фон на всякий случай */
+            background: #fff;
         }
-        /* Изображение занимает всю ширину экрана */
         .full-width-image {
             display: block;
             width: 100%;
             height: auto;
-            object-fit: cover; /* при необходимости обрежется, но сохранит пропорции */
+            object-fit: cover;
         }
-        /* Небольшой отступ между изображением и видео */
         .spacer {
-            height: 30px; /* можно изменить под свой вкус */
+            height: 30px;
             width: 100%;
         }
-        /* Контейнер для видео — используем flex для ряда */
         .video-row {
             display: flex;
-            flex-wrap: wrap; /* на случай узких экранов */
-            gap: 0; /* если нужны промежутки между видео, укажите, например, 5px */
+            flex-wrap: wrap;
+            gap: 0;
         }
-        /* Каждое видео занимает равную ширину */
         .video-item {
-            flex: 1 1 25%; /* по умолчанию 25% ширины */
+            flex: 1 1 25%;
             box-sizing: border-box;
-            min-width: 200px; /* чтобы на телефонах не сжимались слишком сильно */
+            min-width: 200px;
+            cursor: pointer; /* чтобы было видно, что видео кликабельно */
         }
-        /* Стили для самого видео */
         .video-item video {
             width: 100%;
             height: auto;
             display: block;
-            /* object-fit: cover; /* раскомментируйте, если видео должно заполнять блок без чёрных полей */
+            pointer-events: none; /* отключаем стандартное поведение браузера, чтобы наш скрипт полностью управлял кликами */
         }
-        /* Для мобильных: при ширине меньше 800px видео могут переходить в два по два */
+        /* Для мобильных адаптация */
         @media (max-width: 800px) {
             .video-item {
-                flex: 1 1 50%; /* по два в ряд */
+                flex: 1 1 50%;
             }
         }
-        /* При совсем маленьких экранах — одно в ряд */
         @media (max-width: 480px) {
             .video-item {
-                flex: 1 1 100%; /* по одному */
+                flex: 1 1 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Изображение на всю ширину -->
     <img src="1.png" alt="Изображение" class="full-width-image">
-
-    <!-- Отступ -->
     <div class="spacer"></div>
 
-    <!-- Ряд из четырёх видео -->
     <div class="video-row">
-        <!-- Видео 1 -->
-        <div class="video-item">
-            <video muted loop playsinline>
+        <div class="video-item" onclick="toggleVideo(this)">
+            <video loop playsinline>
                 <source src="13.mp4" type="video/mp4">
                 Ваш браузер не поддерживает видео.
             </video>
         </div>
-        <!-- Видео 2 (тот же файл) -->
-        <div class="video-item">
-            <video muted loop playsinline>
+        <div class="video-item" onclick="toggleVideo(this)">
+            <video loop playsinline>
                 <source src="13.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
             </video>
         </div>
-        <!-- Видео 3 -->
-        <div class="video-item">
-            <video muted loop playsinline>
+        <div class="video-item" onclick="toggleVideo(this)">
+            <video loop playsinline>
                 <source src="13.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
             </video>
         </div>
-        <!-- Видео 4 -->
-        <div class="video-item">
-            <video muted loop playsinline>
+        <div class="video-item" onclick="toggleVideo(this)">
+            <video loop playsinline>
                 <source src="13.mp4" type="video/mp4">
-                Ваш браузер не поддерживает видео.
             </video>
         </div>
     </div>
+
+    <script>
+        function toggleVideo(container) {
+            const video = container.querySelector('video');
+            if (video.paused) {
+                video.play().catch(e => console.log('Ошибка воспроизведения:', e));
+            } else {
+                video.pause();
+            }
+        }
+    </script>
 </body>
 </html>
